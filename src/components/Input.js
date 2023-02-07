@@ -8,8 +8,6 @@ const Input = () => {
   const dispatch = useDispatch();
 
   const addTask = () => {
-    //console.log(`adding task ${input}`);
-
     dispatch(
       saveTask({
         item: input,
