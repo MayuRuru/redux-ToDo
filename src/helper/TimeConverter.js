@@ -1,12 +1,12 @@
-import { parseISO, formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 
 import React from "react";
 
 const TimeConverter = ({ timestamp }) => {
   let timePassed = "";
   if (timestamp) {
-    const date = parseISO(timestamp);
-    const timePeriod = formatDistanceToNow(date);
+    //const date = parseISO(timestamp);
+    const timePeriod = formatDistanceToNow(new Date(timestamp));
     timePassed = `${timePeriod} ago`;
   }
 

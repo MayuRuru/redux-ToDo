@@ -3,7 +3,7 @@ import "./NotesList.css";
 import { useSelector } from "react-redux";
 import { selectNotesList } from "../../features/notes/notesSlice";
 import NotesAuthor from "../../features/notes/NotesAuthor";
-//import TimeConverter from "../../helper/TimeConverter";
+import TimeConverter from "../../helper/TimeConverter";
 
 const NotesList = () => {
   const notes = useSelector(selectNotesList);
@@ -18,7 +18,7 @@ const NotesList = () => {
       <p>{note.content.substring(0, 100)}</p>
       <p className="noteCredit">
         <NotesAuthor userId={note.userId} />
-        {/* <TimeConverter timestamp={note.date} /> */}
+        <TimeConverter timestamp={note.date} />
       </p>
     </article>
   ));
