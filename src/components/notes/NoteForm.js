@@ -1,4 +1,4 @@
-import React from "react";
+import "./NoteForm.css";
 import { useState } from "react";
 import { noteAdded } from "../../features/notes/notesSlice";
 import { useSelector, useDispatch } from "react-redux";
