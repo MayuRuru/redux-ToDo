@@ -5,6 +5,6 @@ import notesReducer from "../features/notes/notesSlice";
 export default configureStore({
   reducer: {
     tasks: tasksReducer,
-    posts: notesReducer,
+    notes: notesReducer,
   },
 });

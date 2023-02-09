@@ -1,9 +1,9 @@
 import React from "react";
-import "./TaskList.css";
+import "./TasksList.css";
 import Input from "./Input";
 import TaskItem from "./TaskItem";
 import { useSelector } from "react-redux";
-import { selectTaskList } from "../../features/taskList/taskSlice";
+import { selectTaskList } from "../../features/tasks/tasksSlice";
 
 const TaskList = () => {
   const taskList = useSelector(selectTaskList);

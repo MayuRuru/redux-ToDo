@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import TaskList from "./components/tasks/TaskList";
+import NotesList from "./components/notes/NotesList";
+import TasksList from "./components/tasks/TasksList";
 
 function App() {
   return (
-    <main className="app">
-      <h1>Redux test</h1>
-      <TaskList />
+    <main>
+      <TasksList />
+      <NotesList />
     </main>
   );
 }

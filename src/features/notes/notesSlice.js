@@ -20,3 +20,5 @@ const notesSlice = createSlice({
 });
 
 export default notesSlice.reducer;
+
+export const selectNotesList = (state) => state.notes;
