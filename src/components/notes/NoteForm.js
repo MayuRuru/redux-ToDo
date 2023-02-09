@@ -1,24 +1,36 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
 import { noteAdded } from "../../features/notes/notesSlice";
+import { useSelector } from "react-redux";
+import { selectAllUsers } from "../../features/users/usersSlice";
 
 const NoteForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [userId, setUserId] = useState("");
 
+  //const onAuthorChanged = (e) => setUserId(e.target.value);
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
 
+  const users = useSelector(selectAllUsers);
+  const userOptions = users.map((user) => (
+    <option key={user.id} value={user.id}>
+      {user.name}
+    </option>
+  ));
+
   const onSaveNoteClicked = () => {
     if (title && content) {
-      dispatch(noteAdded(title, content));
+      dispatch(noteAdded(title, content, userId));
       setTitle("");
       setContent("");
     }
   };
+
+  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
 
   return (
     <section>
@@ -32,8 +44,11 @@ const NoteForm = () => {
           value={title}
           onChange={onTitleChanged}
         />
-      </form>
-      <form>
+        <label htmlFor="noteAuthor">Author:</label>
+        <select id="noteAuthor" value={userId}>
+          <option value=""></option>
+          {userOptions}
+        </select>
         <label htmlFor="noteContent">Content:</label>
         <textarea
           type="text"
@@ -42,7 +57,7 @@ const NoteForm = () => {
           value={content}
           onChange={onContentChanged}
         />
-        <button type="button" onClick={onSaveNoteClicked}>
+        <button type="button" onClick={onSaveNoteClicked} disabled={!canSave}>
           SAVE
         </button>
       </form>

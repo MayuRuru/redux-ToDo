@@ -18,16 +18,17 @@ const notesSlice = createSlice({
   initialState,
   reducers: {
     noteAdded: {
-      reducer(state, action) {
+      reducer(state, action, userId) {
         state.push(action.payload);
       },
       // prepare callback function to separate logic from component:
-      prepare(title, content) {
+      prepare(title, content, userId) {
         return {
           payload: {
             id: nanoid(),
             title,
             content,
+            userId,
           },
         };
       },
