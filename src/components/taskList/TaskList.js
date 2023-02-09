@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 import { useSelector } from "react-redux";
 import { selectTaskList } from "../../features/taskList/taskSlice";
 
-export const TaskList = () => {
+const TaskList = () => {
   const taskList = useSelector(selectTaskList);
 
   return (
@@ -19,3 +19,5 @@ export const TaskList = () => {
     </div>
   );
 };
+
+export default TaskList;
