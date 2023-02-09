@@ -11,7 +11,7 @@ const NoteForm = () => {
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
 
-  //const onAuthorChanged = (e) => setUserId(e.target.value);
+  const onAuthorChanged = (e) => setUserId(e.target.value);
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
 
