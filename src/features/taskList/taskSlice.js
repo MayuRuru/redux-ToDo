@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   taskList: [],
-  status: "idle",
+  //status: "idle",
 };
 
 export const taskSlice = createSlice({
