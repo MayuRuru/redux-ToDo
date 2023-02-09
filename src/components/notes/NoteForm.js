@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { noteAdded } from "../../features/notes/notesSlice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectAllUsers } from "../../features/users/usersSlice";
 
 const NoteForm = () => {
   const dispatch = useDispatch();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
@@ -16,6 +16,7 @@ const NoteForm = () => {
   const onContentChanged = (e) => setContent(e.target.value);
 
   const users = useSelector(selectAllUsers);
+
   const userOptions = users.map((user) => (
     <option key={user.id} value={user.id}>
       {user.name}
@@ -45,7 +46,7 @@ const NoteForm = () => {
           onChange={onTitleChanged}
         />
         <label htmlFor="noteAuthor">Author:</label>
-        <select id="noteAuthor" value={userId}>
+        <select id="noteAuthor" value={userId} onChange={onAuthorChanged}>
           <option value=""></option>
           {userOptions}
         </select>

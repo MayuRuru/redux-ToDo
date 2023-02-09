@@ -7,12 +7,26 @@ const initialState = [
     title: "Learning Redux Toolkit",
     content: "The new preferred way of implementing Redux",
     date: sub(new Date(), { minutes: 10 }).toISOString(),
+    topics: {
+      cleanCode: 0,
+      fundamentals: 0,
+      TDD: 0,
+      techRadar: 0,
+      insightful: 0,
+    },
   },
   {
     id: "2",
     title: "Starting a TDD course",
     content: "A MUST for clean code",
     date: sub(new Date(), { minutes: 5 }).toISOString(),
+    topics: {
+      cleanCode: 0,
+      fundamentals: 0,
+      TDD: 0,
+      techRadar: 0,
+      insightful: 0,
+    },
   },
 ];
 
@@ -33,9 +47,23 @@ const notesSlice = createSlice({
             content,
             date: new Date().toISOString,
             userId,
+            topics: {
+              cleanCode: 0,
+              fundamentals: 0,
+              TDD: 0,
+              techRadar: 0,
+              insightful: 0,
+            },
           },
         };
       },
+    },
+    topicAdded(state, action) {
+      const { noteId, reaction } = action.payload;
+      const existingNote = state.find((note) => note.id === noteId);
+      if (existingNote) {
+        existingNote.topics[reaction]++;
+      }
     },
   },
 });
@@ -44,4 +72,4 @@ export default notesSlice.reducer;
 
 export const selectNotesList = (state) => state.notes;
 
-export const { noteAdded } = notesSlice.actions;
+export const { noteAdded, topicAdded } = notesSlice.actions;
