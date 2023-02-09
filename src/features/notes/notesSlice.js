@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = [
   {
@@ -16,9 +16,27 @@ const initialState = [
 const notesSlice = createSlice({
   name: "notes",
   initialState,
-  reducers: {},
+  reducers: {
+    noteAdded: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      // prepare callback function to separate logic from component:
+      prepare(title, content) {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            content,
+          },
+        };
+      },
+    },
+  },
 });
 
 export default notesSlice.reducer;
 
 export const selectNotesList = (state) => state.notes;
+
+export const { noteAdded } = notesSlice.actions;

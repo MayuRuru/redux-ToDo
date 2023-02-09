@@ -6,17 +6,16 @@ const initialState = {
 };
 
 export const tasksSlice = createSlice({
-  // createSlice will automatically generate action creators
-  // that correspond to each case reducer function we provide
-  // automatically returns the existing state in the default case
-  // allows us to safely "mutate" our state!
-
   name: "tasks",
-
   // need to initialize:
   initialState,
 
   reducers: {
+    // createSlice will automatically generate action creators
+    // that correspond to each case reducer function we provide
+    // automatically returns the existing state in the default case
+    // allows us to safely "mutate" our state!
+
     taskAdded(state, action) {
       const task = action.payload;
       state.taskList[task.id] = task;
@@ -72,7 +71,7 @@ export const tasksSlice = createSlice({
   },
 });
 
-// each case under reducers becomes an action:
+// each case under reducers becomes an action creation:
 export const { taskAdded, checkChanged, taskDeleted } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
