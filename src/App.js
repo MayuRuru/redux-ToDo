@@ -24,3 +24,12 @@ function App() {
 }
 
 export default App;
+
+/* store.subscribe(() => {
+  store.getState();
+});
+
+store.dispatch(taskAdded("task1"));
+store.dispatch(taskCompleted(1));
+
+console.log(store.getState()); */

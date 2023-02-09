@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./Input.css";
 import { useDispatch } from "react-redux";
-import { saveTask } from "../features/taskSlice";
+import { taskAdded } from "../features/taskSlice";
 
 const Input = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
+  // gets the dispatch function to dispatch our actions
 
   const addTask = () => {
     dispatch(
-      saveTask({
+      taskAdded({
         item: input,
         done: false,
         id: Date.now(),

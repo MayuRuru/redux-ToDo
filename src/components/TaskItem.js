@@ -6,6 +6,7 @@ import { setCheck } from "../features/taskSlice";
 
 const TaskItem = ({ name, done, id }) => {
   const dispatch = useDispatch();
+
   const handleChange = () => {
     dispatch(setCheck(id));
   };
@@ -23,4 +24,5 @@ const TaskItem = ({ name, done, id }) => {
     </div>
   );
 };
+
 export default TaskItem;
