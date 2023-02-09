@@ -5,7 +5,7 @@ const initialState = {
   //status: "idle",
 };
 
-export const taskSlice = createSlice({
+export const tasksSlice = createSlice({
   // createSlice will automatically generate action creators
   // that correspond to each case reducer function we provide
   // automatically returns the existing state in the default case
@@ -73,9 +73,9 @@ export const taskSlice = createSlice({
 });
 
 // each case under reducers becomes an action:
-export const { taskAdded, checkChanged, taskDeleted } = taskSlice.actions;
+export const { taskAdded, checkChanged, taskDeleted } = tasksSlice.actions;
 
-export default taskSlice.reducer;
+export default tasksSlice.reducer;
 
 //to read data we need useSelector to return the state of the name(tasks).value(taskList)
 export const selectTaskList = (state) => state.tasks.taskList;
