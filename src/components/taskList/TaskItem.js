@@ -2,13 +2,13 @@ import { Checkbox } from "@mui/material";
 import React from "react";
 import "./TaskItem.css";
 import { useDispatch } from "react-redux";
-import { setCheck } from "../features/taskSlice";
+import { checkChanged } from "../features/taskList/taskSlice";
 
 const TaskItem = ({ name, done, id }) => {
   const dispatch = useDispatch();
 
   const handleChange = () => {
-    dispatch(setCheck(id));
+    dispatch(checkChanged(id));
   };
 
   return (

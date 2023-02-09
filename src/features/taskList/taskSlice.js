@@ -20,14 +20,16 @@ export const taskSlice = createSlice({
     taskAdded(state, action) {
       const task = action.payload;
       state.taskList[task.id] = task;
-      // state.taskList.push(action.payload);
+      state.taskList.push(action.payload);
     },
 
     checkChanged(state, action) {
       const taskId = action.payload;
       const task = state.taskList[taskId];
+
       // const task = state.taskList.find((task) => task.id === action.payload);
       task.done = !task.done;
+
       /*  state.taskList.forEach((item) => {
         if (action.payload === item.id) {
           if (item.done === true) {

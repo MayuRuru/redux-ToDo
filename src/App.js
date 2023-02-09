@@ -1,35 +1,13 @@
 import React from "react";
-import "./App.css";
-import Input from "./components/Input";
-import TaskItem from "./components/TaskItem";
-import { useSelector } from "react-redux";
-import { selectTaskList } from "./features/taskSlice";
+import { TaskList } from "./components/taskList/TaskList";
 
 function App() {
-  const taskList = useSelector(selectTaskList);
-
   return (
     <div className="app">
       <h1>Redux test</h1>
-      <div className="app_container">
-        <div className="tasks_container">
-          {taskList.map((item) => (
-            <TaskItem name={item.item} done={item.done} id={item.id} />
-          ))}
-        </div>
-        <Input />
-      </div>
+      <TaskList />
     </div>
   );
 }
 
 export default App;
-
-/* store.subscribe(() => {
-  store.getState();
-});
-
-store.dispatch(taskAdded("task1"));
-store.dispatch(taskCompleted(1));
-
-console.log(store.getState()); */
