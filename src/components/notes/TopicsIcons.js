@@ -34,15 +34,20 @@ const TopicsIcons = ({ note }) => {
 
   const topicButtons = Object.entries(topicEmoji).map(([name, emoji]) => {
     return (
-      <button>
+      <button
         key={name}
-        type="button" className="topicButton" onClick=
-        {() => dispatch(topicAdded({ postId: postMessage.id, topic: name }))}
+        type="button"
+        className="topicButton"
+        onClick={() =>
+          dispatch(topicAdded({ noteId: note.id, reaction: name }))
+        }
+      >
+        {emoji} {note.topics[name]}
       </button>
     );
   });
 
-  return <>{topicButtons}</>;
+  return <div>{topicButtons}</div>;
 };
 
 export default TopicsIcons;

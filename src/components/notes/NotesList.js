@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectNotesList } from "../../features/notes/notesSlice";
 import NotesAuthor from "../../features/notes/NotesAuthor";
 import TimeConverter from "../../helper/TimeConverter";
+import TopicsIcons from "./TopicsIcons";
 
 const NotesList = () => {
   const notes = useSelector(selectNotesList);
@@ -20,6 +21,7 @@ const NotesList = () => {
         <NotesAuthor userId={note.userId} />
         <TimeConverter timestamp={note.date} />
       </p>
+      <TopicsIcons note={note} />
     </article>
   ));
 
