@@ -73,3 +73,11 @@ export default notesSlice.reducer;
 export const selectNotesList = (state) => state.notes;
 
 export const { noteAdded, topicAdded } = notesSlice.actions;
+
+/* //getSelector creates these selectors we can destructure and rename
+export const {
+  selectAll: selectAllNotes,
+  selectById: selectNoteById,
+  selectIds: selectNoteIds
+  // Pass in a selector that returns the notesSlice of state
+} = notesAdapter.getSelectors(state => state.notes) */
