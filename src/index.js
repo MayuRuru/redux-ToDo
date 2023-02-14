@@ -12,12 +12,12 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    {/*     <Provider store={store}>
+    <Provider store={store}>
       <App />
-    </Provider> */}
+    </Provider>
 
-    <ApiProvider api={apiSlice}>
+    {/* <ApiProvider api={apiSlice}>
       <App />
-    </ApiProvider>
+    </ApiProvider> */}
   </React.StrictMode>
 );
