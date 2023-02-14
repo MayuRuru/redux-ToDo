@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Learn Redux Toolkit",
+      "done": false
+    },
+    {
+      "id": 2,
+      "name": "Learn RTK Query",
+      "done": false
+    },
+    {
+      "id": 3,
+      "name": "Apply Bootstrap",
+      "done": false
+    },
+    {
+      "id": 4,
+      "name": "Change px to rem",
+      "done": false
+    }
+  ]
+}
