@@ -2,12 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   taskList: [],
-  //status: "idle",
 };
 
 export const tasksSlice = createSlice({
   name: "tasks",
-  // need to initialize:
   initialState,
 
   reducers: {
