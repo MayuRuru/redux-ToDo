@@ -11,11 +11,11 @@ import {
   useAddTaskMutation,
   useUpdateTaskMutation,
   useDeleteTaskMutation,
-  selectTaskIds,
+  selectAllTasks,
 } from "../../features/tasks/tasksSlice_extended";
 
 const TaskList = () => {
-  const taskList = useSelector(selectTaskIds);
+  const taskList = useSelector(selectAllTasks);
 
   const {
     //data: tasks,
