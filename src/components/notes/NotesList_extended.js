@@ -1,8 +1,10 @@
 import React from "react";
 import "./NotesList.css";
 import { useSelector } from "react-redux";
-import { useGetNotesQuery } from "../../features/notes/notesSlice_extended";
-import { selectNoteIds } from "../../features/notes/notesSlice_extended";
+import {
+  useGetNotesQuery,
+  selectNoteIds,
+} from "../../features/notes/notesSlice_extended";
 import NoteDetail from "./NoteDetail";
 
 const NotesList = () => {

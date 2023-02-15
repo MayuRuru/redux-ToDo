@@ -2,7 +2,7 @@ import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../api/apiSlice";
 
 const tasksAdapter = createEntityAdapter();
-const initialState = tasksAdapter.initialState();
+const initialState = tasksAdapter.getInitialState();
 
 export const tasksApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

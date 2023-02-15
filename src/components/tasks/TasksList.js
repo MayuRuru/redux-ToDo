@@ -2,22 +2,23 @@ import React from "react";
 import "./TasksList.css";
 import Input from "./Input";
 import TaskItem from "./TaskItem";
-
 // old version:
-import { useSelector } from "react-redux";
-import { selectTaskList } from "../../features/tasks/tasksSlice";
+// import { selectTaskList } from "../../features/tasks/tasksSlice";
 
+import { useSelector } from "react-redux";
 import {
   useGetTasksQuery,
   useAddTaskMutation,
   useUpdateTaskMutation,
   useDeleteTaskMutation,
-} from "../../features/api/apiSlice_v1";
+  selectTaskIds,
+} from "../../features/tasks/tasksSlice_extended";
 
 const TaskList = () => {
-  //const taskList = useSelector(selectTaskList);
+  const taskList = useSelector(selectTaskIds);
+
   const {
-    data: tasks,
+    //data: tasks,
     isLoading,
     isSuccess,
     isError,
@@ -33,39 +34,15 @@ const TaskList = () => {
     content = <p>Loading...</p>;
   } else if (isSuccess) {
     /* content = JSON.stringify(tasks); */
-    content = tasks.map(
-      (task) => (
-        <TaskItem task={task} updateTask={updateTask} deleteTask={deleteTask} />
-      )
-      /*       return (
-        <article key={task.id}>
-          <div className="task">
-            <input
-              type="checkbox"
-              id={task.id}
-              done={task.done}
-              onChange={() =>
-                updateTask({
-                  ...task,
-                  done: !task.done,
-                })
-              }
-            />
-            <label htmlFor={task.id}>{task.name}</label>
-          </div>
-          <button
-            className="trash"
-            onClick={() =>
-              deleteTask({
-                id: task.id,
-              })
-            }
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-        </article>
-      ); */
-    );
+    content = taskList.map((task, index) => (
+      <TaskItem
+        className="task"
+        key={index}
+        task={task}
+        updateTask={updateTask}
+        deleteTask={deleteTask}
+      />
+    ));
   } else if (isError) {
     content = <p>{error}</p>;
   }
@@ -73,9 +50,6 @@ const TaskList = () => {
   return (
     <div className="tasks_container">
       <div className="taskList_container">
-        {/*         {taskList.map((item) => (
-          <TaskItem name={item.item} done={item.done} id={item.id} />
-        ))} */}
         <h1>Task List</h1>
         {content}
       </div>

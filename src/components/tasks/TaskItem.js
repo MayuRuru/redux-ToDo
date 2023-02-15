@@ -10,7 +10,6 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TaskItem = ({ task, updateTask, deleteTask }) => {
   // old version:
-
   //const dispatch = useDispatch();
   /*   const handleChange = () => {
     dispatch(checkChanged(id));
@@ -23,19 +22,16 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
       done: !task.done,
     });
   };
-
   return (
     <div className="taskItem">
       <Checkbox
         checked={task.done}
-        id={task.id}
         color="primary"
         onChange={handleChange}
         inputProps={{ "aria-label": "secondary checkbox" }}
       />
-
+      <label htmlFor={task.id}>{task.name}</label>
       <p className={task.done && "taskItem--done"}>{task.name}</p>
-
       <button
         className="trash"
         onClick={() =>
