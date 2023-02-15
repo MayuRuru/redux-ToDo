@@ -30,7 +30,9 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
         onChange={handleChange}
         inputProps={{ "aria-label": "secondary checkbox" }}
       />
-      <label htmlFor={task.id}>{task.name}</label>
+      {/*    <label htmlFor={task.id} className={task.done && "taskItem--done"}>
+        {task.name}
+      </label> */}
       <p className={task.done && "taskItem--done"}>{task.name}</p>
       <button
         className="trash"
