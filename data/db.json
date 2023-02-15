@@ -20,5 +20,45 @@
       "name": "Change px to rem",
       "done": false
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Gina"
+    },
+    {
+      "id": 2,
+      "name": "Mungi"
+    },
+    {
+      "id": 2,
+      "name": "Puig"
+    }
+  ],
+  "notes": [
+    {
+      "id": 1,
+      "title": "Learning Redux Toolkit",
+      "content": "The new preferred way of implementing Redux",
+      "topics": {
+        "cleanCode": 0,
+        "fundamentals": 0,
+        "TDD": 0,
+        "techRadar": 0,
+        "insightful": 0
+      }
+    },
+    {
+      "id": 2,
+      "title": "Starting a TDD course",
+      "content": "A MUST for clean code",
+      "topics": {
+        "cleanCode": 0,
+        "fundamentals": 0,
+        "TDD": 0,
+        "techRadar": 0,
+        "insightful": 0
+      }
+    }
   ]
 }
