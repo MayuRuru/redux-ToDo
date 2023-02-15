@@ -1,26 +1,51 @@
 import { Checkbox } from "@mui/material";
 import React from "react";
 import "./TaskItem.css";
-import { useDispatch } from "react-redux";
-import { checkChanged } from "../../features/tasks/tasksSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const TaskItem = ({ name, done, id }) => {
-  const dispatch = useDispatch();
+// old version:
+// import { useDispatch } from "react-redux";
+// import { checkChanged } from "../../features/tasks/tasksSlice";
+
+const TaskItem = ({ task, updateTask, deleteTask }) => {
+  // old version:
+
+  //const dispatch = useDispatch();
+  /*   const handleChange = () => {
+    dispatch(checkChanged(id));
+  };
+ */
 
   const handleChange = () => {
-    dispatch(checkChanged(id));
+    updateTask({
+      ...task,
+      done: !task.done,
+    });
   };
 
   return (
     <div className="taskItem">
       <Checkbox
-        checked={done}
+        checked={task.done}
+        id={task.id}
         color="primary"
         onChange={handleChange}
         inputProps={{ "aria-label": "secondary checkbox" }}
       />
 
-      <p className={done && "taskItem--done"}>{name}</p>
+      <p className={task.done && "taskItem--done"}>{task.name}</p>
+
+      <button
+        className="trash"
+        onClick={() =>
+          deleteTask({
+            id: task.id,
+          })
+        }
+      >
+        <FontAwesomeIcon icon={faTrash} />
+      </button>
     </div>
   );
 };
