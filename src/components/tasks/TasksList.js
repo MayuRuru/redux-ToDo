@@ -1,12 +1,9 @@
 import React from "react";
 import "./TasksList.css";
 import Input from "./Input";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import TaskItem from "./TaskItem";
 
 // old version:
-import TaskItem from "./TaskItem";
 import { useSelector } from "react-redux";
 import { selectTaskList } from "../../features/tasks/tasksSlice";
 
@@ -36,8 +33,11 @@ const TaskList = () => {
     content = <p>Loading...</p>;
   } else if (isSuccess) {
     /* content = JSON.stringify(tasks); */
-    content = tasks.map((task) => {
-      return (
+    content = tasks.map(
+      (task) => (
+        <TaskItem task={task} updateTask={updateTask} deleteTask={deleteTask} />
+      )
+      /*       return (
         <article key={task.id}>
           <div className="task">
             <input
@@ -64,8 +64,8 @@ const TaskList = () => {
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </article>
-      );
-    });
+      ); */
+    );
   } else if (isError) {
     content = <p>{error}</p>;
   }
@@ -79,7 +79,6 @@ const TaskList = () => {
         <h1>Task List</h1>
         {content}
       </div>
-
       <Input addTask={addTask} />
     </div>
   );
