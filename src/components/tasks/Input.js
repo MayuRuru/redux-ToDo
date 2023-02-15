@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import "./Input.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import "./Input.css";
-import { useDispatch } from "react-redux";
-import { taskAdded } from "../../features/tasks/tasksSlice";
-//import { useGetTasksQuery } from "../../features/api/apiSlice";
 
-const Input = () => {
+// old version:
+// import { useDispatch } from "react-redux";
+// import { taskAdded } from "../../features/tasks/tasksSlice";
+
+const Input = ({ addTask }) => {
   const [input, setInput] = useState("");
-  const dispatch = useDispatch();
-  // gets the dispatch function to dispatch our actions
 
+  // gets the dispatch function to dispatch our actions
+  // const dispatch = useDispatch();
   /*   const addTask = () => {
     dispatch(
       taskAdded({
@@ -21,16 +23,23 @@ const Input = () => {
     );
   }; */
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTask({ name: input, done: false });
+    setInput("");
+  };
+
   return (
     <div className="input">
       <input
         type="text"
         id="new_task"
         value={input}
+        placeholder="Enter new task"
         onChange={(event) => setInput(event.target.value)}
       />
       <button className="submit">
-        <FontAwesomeIcon icon={faUpload} />
+        <FontAwesomeIcon icon={faUpload} onClick={handleSubmit} />
         {/* onClick={addTask}>Add */}
       </button>
     </div>
