@@ -11,7 +11,7 @@ export const apiSlice = createApi({
   tagTypes: ["Task"],
 
   endpoints: (builder) => ({
-    getTasks: builder.query({
+    /*  getTasks: builder.query({
       query: () => "/tasks",
       transformResponse: (res) => res.sort((a, b) => b.id - a.id),
       providesTags: ["Tasks"],
@@ -39,15 +39,6 @@ export const apiSlice = createApi({
         body: id,
       }),
       invalidatesTags: ["Task"],
-    }),
+    }), */
   }),
 });
-
-// RTK Query provides custom hooks based on the names of out methods:
-export const {
-  useGetTasksQuery,
-  useAddTaskMutation,
-  useUpdateTaskMutation,
-  useDeleteTaskMutation,
-  // It will be an extendedApiSlice
-} = apiSlice;
