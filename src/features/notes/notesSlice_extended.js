@@ -1,9 +1,4 @@
-import {
-  createSlice,
-  nanoid,
-  createSelector,
-  createEntityAdapter,
-} from "@reduxjs/toolkit";
+import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 
 import { sub } from "date-fns";
 import { apiSlice } from "../api/apiSlice";
@@ -14,10 +9,9 @@ const notesAdapter = createEntityAdapter({
 
 const initialState = notesAdapter.getInitialState();
 
+// old version:
 // export default notesSlice.reducer;
-
 // export const selectNotesList = (state) => state.notes;
-
 // export const { noteAdded, topicAdded } = notesSlice.actions;
 
 export const extendedApiSlice = apiSlice.injectEndpoints({
@@ -116,6 +110,8 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
+// RTK Query provides custom hooks based on the names of out methods:
+
 export const {
   useGetNotesQuery,
   useGetNotesByUserIdQuery,
@@ -125,14 +121,14 @@ export const {
 } = extendedApiSlice;
 
 // returns an object result from query
-export const selectNoteResult = extendedApiSlice.endpoints.getNotes.select();
+export const selectNotesResult = extendedApiSlice.endpoints.getNotes.select();
 
 // creates memoized selector
-const selectNoteData = createSelector(
+const selectNotesData = createSelector(
   // input function:
-  selectNoteResult,
+  selectNotesResult,
   // output: normalized state object with ids and entities:
-  (noteResult) => noteResult.data
+  (notesResult) => notesResult.data
 );
 
 // getSelector creates these selectors we can destructure and rename
@@ -141,4 +137,6 @@ export const {
   selectById: selectNoteById,
   selectIds: selectNoteIds,
   // Pass in a selector that returns the notesSlice of state
-} = notesAdapter.getSelectors((state) => selectNoteData(state) ?? initialState);
+} = notesAdapter.getSelectors(
+  (state) => selectNotesData(state) ?? initialState
+);
