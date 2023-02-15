@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import NoteForm from "./components/notes/NoteForm";
-import NotesList from "./components/notes/NotesList";
 import TasksList from "./components/tasks/TasksList";
+import NotesList from "./components/notes/NotesList_extended";
+import NoteForm from "./components/notes/NoteForm_extended";
 
 function App() {
   return (
