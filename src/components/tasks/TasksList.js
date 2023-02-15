@@ -1,11 +1,15 @@
 import React from "react";
 import "./TasksList.css";
 import Input from "./Input";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+// old version:
 import TaskItem from "./TaskItem";
 import { useSelector } from "react-redux";
 import { selectTaskList } from "../../features/tasks/tasksSlice";
+
 import {
   useGetTasksQuery,
   useAddTaskMutation,
@@ -22,15 +26,10 @@ const TaskList = () => {
     isError,
     error,
   } = useGetTasksQuery();
+
   const [addTask] = useAddTaskMutation();
   const [updateTask] = useUpdateTaskMutation();
   const [deleteTask] = useDeleteTaskMutation();
-
-  /*   const handleSubmit = (e) => {
-    e.preventDefault();
-    addTask({name:input, done:false});
-    setInput('')
-  } */
 
   let content;
   if (isLoading) {
@@ -77,10 +76,11 @@ const TaskList = () => {
         {/*         {taskList.map((item) => (
           <TaskItem name={item.item} done={item.done} id={item.id} />
         ))} */}
+        <h1>Task List</h1>
         {content}
       </div>
 
-      <Input />
+      <Input addTask={addTask} />
     </div>
   );
 };
